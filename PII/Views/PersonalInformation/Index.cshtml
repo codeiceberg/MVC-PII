@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PII.Models.PersonalInformation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@if (Model == null)
+{
+    <p>We don't have any Client for now</p>
+}
+else
+{
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var personalInfo in Model)
+            {
+                <tr>
+                    <td>
+                        @personalInfo.FistName
+                        @personalInfo.LastName
+                        @personalInfo.MiddleName
+                    </td>
+                    <td>@Html.ActionLink("Details", "PersonalInformationForm", "PersonalInformation", new { id = personalInfo.Id }, null) &raquo;</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
