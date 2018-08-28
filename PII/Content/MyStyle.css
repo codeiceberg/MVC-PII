@@ -260,7 +260,9 @@
 }
 .card .card-body .control-label {
     text-align: right;
-    padding-top: 6px;
+    /*padding-top: 6px;*/
+    margin: 0;
+    vertical-align: middle;
     color: #9a9a9a;
 }
 
@@ -273,7 +275,7 @@
 .card input, select, textarea {
     box-shadow: none;
     max-width: 100%;
-    margin-top: 8px;
+    margin-top: 2px;
 }
 
 .card .radio, .checkbox {
@@ -299,7 +301,10 @@
 .card .panel-body {
     padding: 7px 15px 3px;
 }
+
+
 .card .panel .form-control {
+    height: 27px;
     text-align: center;
     border-color:whitesmoke
 }
@@ -314,8 +319,11 @@
 
   }
 
-.card .panel .btn-primary {
-    margin-top: 8px;
+.card .panel .btn {
+    height: 25px;
+    padding: 0 8px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -325,11 +333,17 @@ input[type='radio'], input[type='checkbox'] {
     line-height: normal;
 }
 
+
 .form-group-sm .form-control {
-    height: 28px;
+    height: 27px;
+    vertical-align:middle;
 
 }
 
+
+.form-group-sm select.form-control {
+    height: 27px;
+}
 /*media all*/
 .block {
     padding: 6px;

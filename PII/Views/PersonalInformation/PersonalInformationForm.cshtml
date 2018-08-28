@@ -17,7 +17,6 @@
                     </div>
                     <div class="card-body">
                         <form class="form-horizontal">
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group-sm">
@@ -29,12 +28,6 @@
                                                 @Html.TextBoxFor(m => m.PersonalInformation.LastName, new { @class = "form-control" })
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group-sm">
                                         <div class="row">
                                             <label class="col-sm-4 control-label">
                                                 @Html.LabelFor(m => m.PersonalInformation.FistName)
@@ -43,73 +36,63 @@
                                                 @Html.TextBoxFor(m => m.PersonalInformation.FistName, new { @class = "form-control" })
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="row">
-                                        <div class="form-group-sm">
+                                        <div class="row">
+                                            <div class="form-group-sm">
 
-                                            <label class="col-sm-4 control-label">
-                                                @Html.LabelFor(m => m.PersonalInformation.MiddleName)
-                                            </label>
-                                            <div class="col-sm-8">
-                                                @Html.TextBoxFor(m => m.PersonalInformation.MiddleName, new { @class = "form-control" })
+                                                <label class="col-sm-4 control-label">
+                                                    @Html.LabelFor(m => m.PersonalInformation.MiddleName)
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    @Html.TextBoxFor(m => m.PersonalInformation.MiddleName, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group-sm">
+                                                <label class="col-sm-4 control-label">
+                                                    @Html.LabelFor(m => m.PersonalInformation.NameExtension)
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    @Html.TextBoxFor(m => m.PersonalInformation.NameExtension, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group-sm">
+                                                <div class="col-sm-4 control-label">
+                                                    @Html.LabelFor(m => m.PersonalInformation.DateOfBirth)
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    @Html.TextBoxFor(m => m.PersonalInformation.DateOfBirth, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group-sm">
+                                                <div class="col-sm-4 control-label">
+                                                    @Html.LabelFor(m => m.PersonalInformation.PlateOfBirthAddressId)
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    @Html.TextBoxFor(m => m.PersonalInformation.PlateOfBirthAddressId, new { @class = "form-control" })
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
-                                        <div class="form-group-sm">
-                                            <label class="col-sm-4 control-label">
-                                                @Html.LabelFor(m => m.PersonalInformation.NameExtension)
-                                            </label>
-                                            <div class="col-sm-8">
-                                                @Html.TextBoxFor(m => m.PersonalInformation.NameExtension, new { @class = "form-control" })
-                                            </div>
+                                        <div class="text-right">
+                                            <img class="img-thumbnail" style="width: 140px; height: 140px;" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIG1lZXQiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48IS0tClNvdXJjZSBVUkw6IGhvbGRlci5qcy8xNDB4MTQwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPiNob2xkZXJfMTY1N2I3MjliYWIgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gPC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjU3YjcyOWJhYiI+PHJlY3QgZmlsbD0iI2VlZWVlZSIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNDAiIC8+PGc+PHRleHQgeD0iNDQuMDY1IiB5PSI3NC41OTkiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-src="holder.js/140x140" data-holder-rendered="true">
                                         </div>
+
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
                                     <div class="row">
                                         <div class="form-group-sm">
                                             <div class="col-sm-4 control-label">
                                                 @Html.LabelFor(m => m.PersonalInformation.Gender)
                                             </div>
                                             <div class="col-sm-8">
-                                                @Html.DropDownListFor(m => m.PersonalInformation.Gender, new SelectList(Model.Genders, "Type", "Type"), new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <div class="col-sm-4 control-label">
-                                                @Html.LabelFor(m => m.PersonalInformation.DateOfBirth)
-                                            </div>
-                                            <div class="col-sm-8">
-                                                @Html.TextBoxFor(m => m.PersonalInformation.DateOfBirth, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <div class="col-sm-4 control-label">
-                                                @Html.LabelFor(m => m.PersonalInformation.PlateOfBirthAddressId)
-                                            </div>
-                                            <div class="col-sm-8">
-                                                @Html.TextBoxFor(m => m.PersonalInformation.PlateOfBirthAddressId, new { @class = "form-control" })
+                                                @Html.DropDownListFor(m => m.PersonalInformation.Gender, new SelectList(Model.Genders, "Type", "Type"), new {@class = "form-control"})
                                             </div>
                                         </div>
                                     </div>
