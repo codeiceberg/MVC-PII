@@ -290,17 +290,34 @@
     <Compile Include="Migrations\201808242117416_recreateBarangayModel.Designer.cs">
       <DependentUpon>201808242117416_recreateBarangayModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808301846221_updatePersonalInformationBDateFormat.cs" />
+    <Compile Include="Migrations\201808301846221_updatePersonalInformationBDateFormat.Designer.cs">
+      <DependentUpon>201808301846221_updatePersonalInformationBDateFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808312159150_createEmploymentModels.cs" />
+    <Compile Include="Migrations\201808312159150_createEmploymentModels.Designer.cs">
+      <DependentUpon>201808312159150_createEmploymentModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808312201368_createEmploymentModels2.cs" />
+    <Compile Include="Migrations\201808312201368_createEmploymentModels2.Designer.cs">
+      <DependentUpon>201808312201368_createEmploymentModels2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Barangay.cs" />
     <Compile Include="Models\CityMunicipality.cs" />
     <Compile Include="Models\CivilStatus.cs" />
+    <Compile Include="Models\EmploymentRank.cs" />
+    <Compile Include="Models\EmploymentType.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NatureOfBusiness.cs" />
     <Compile Include="Models\PersonalInformation.cs" />
     <Compile Include="Models\Province.cs" />
+    <Compile Include="Models\Suffix.cs" />
+    <Compile Include="Models\EmploymentInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
@@ -448,6 +465,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808242117416_recreateBarangayModel.resx">
       <DependentUpon>201808242117416_recreateBarangayModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808301846221_updatePersonalInformationBDateFormat.resx">
+      <DependentUpon>201808301846221_updatePersonalInformationBDateFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808312159150_createEmploymentModels.resx">
+      <DependentUpon>201808312159150_createEmploymentModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808312201368_createEmploymentModels2.resx">
+      <DependentUpon>201808312201368_createEmploymentModels2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

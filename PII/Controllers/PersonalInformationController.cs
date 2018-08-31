@@ -44,7 +44,8 @@ namespace PII.Controllers
                 CivilStatus = civilStatus,
                 Genders =gender,
                 ResidentialAddress = residentialAddress,
-                PermanentAddress = permanentAddress
+                PermanentAddress = permanentAddress,
+                Suffixes = GetSuffixes()
             };
             return View(viewModel);
         }
@@ -67,6 +68,31 @@ namespace PII.Controllers
             {
                 new Gender {Id = 1, Type = "Male"},
                 new Gender {Id = 2, Type = "Female"}
+            };
+        }
+
+        public List<Suffix> GetSuffixes()
+        {
+            return new List<Suffix>
+            {
+                new Suffix {Id = 1, Type = ""},
+                new Suffix {Id = 2, Type = "Jr"},
+                new Suffix {Id = 3, Type = "Sr"},
+                new Suffix {Id = 4, Type = "II"},
+                new Suffix {Id = 5, Type = "III"},
+                new Suffix {Id = 6, Type = "IV"}
+            };
+        }
+
+        public List<EmploymentType> GetEmploymentTypes()
+        {
+            return new List<EmploymentType>
+            {
+                new EmploymentType {Id = 1, Type = "Employed"},
+                new EmploymentType {Id = 2, Type = "None"},
+                new EmploymentType {Id = 3, Type = "Self-Employed"},
+                new EmploymentType {Id = 4, Type = "OFW"},
+                new EmploymentType {Id = 5, Type = "Retired"}
             };
         }
     }

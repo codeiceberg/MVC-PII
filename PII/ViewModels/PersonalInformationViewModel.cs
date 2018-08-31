@@ -11,6 +11,7 @@ namespace PII.ViewModels
         public PersonalInformation PersonalInformation { get; set; }
         public IEnumerable<CivilStatus> CivilStatus { get; set; }
         public IEnumerable<Gender> Genders { get; set; }
+        public IEnumerable<Suffix> Suffixes { get; set; }
         public Address ResidentialAddress { get; set; }
         public Address PermanentAddress { get; set; }
 

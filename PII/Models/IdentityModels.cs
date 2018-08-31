@@ -25,6 +25,9 @@ namespace PII.Models
         public DbSet<Province> Province { get; set; }
         public DbSet<CityMunicipality> CityMunicipality { get; set; }
         public DbSet<Barangay> Barangays { get; set; }
+        public DbSet<EmploymentInformation> EmploymentInformations { get; set; }
+        public DbSet<EmploymentRank> EmploymentRanks { get; set; }
+        public DbSet<NatureOfBusiness> NatureOfBusinesses { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

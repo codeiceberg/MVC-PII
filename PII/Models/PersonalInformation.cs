@@ -14,7 +14,10 @@ namespace PII.Models
         public string LastName { get; set; }
         public string FistName { get; set; }
         public string MiddleName { get; set; }
+
+        [Display (Name = "Suffix")]
         public string NameExtension { get; set; }
+
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Place of Birth")]
