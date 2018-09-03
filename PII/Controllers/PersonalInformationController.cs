@@ -30,26 +30,6 @@ namespace PII.Controllers
             return View(personalInformation);
         }
 
-        public ActionResult PersonalInformationForm(int id)
-        {
-            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
-            var civilStatus = GetCivilStatus();
-            var gender = GetGenders();
-            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
-            var permanentAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.PermanentAddressId);
-
-            var viewModel = new PersonalInformationViewModel
-            {
-                PersonalInformation = personalInformation,
-                CivilStatus = civilStatus,
-                Genders =gender,
-                ResidentialAddress = residentialAddress,
-                PermanentAddress = permanentAddress,
-                Suffixes = GetSuffixes()
-            };
-            return View(viewModel);
-        }
-
         public List<CivilStatus> GetCivilStatus()
         {
             return new List<CivilStatus>
@@ -84,16 +64,57 @@ namespace PII.Controllers
             };
         }
 
-        public List<EmploymentType> GetEmploymentTypes()
+        public ActionResult PersonalForm(int id)
         {
-            return new List<EmploymentType>
+            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
+            var civilStatus = GetCivilStatus();
+            var gender = GetGenders();
+            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
+            var permanentAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.PermanentAddressId);
+
+            var viewModel = new PersonalInformationViewModel
             {
-                new EmploymentType {Id = 1, Type = "Employed"},
-                new EmploymentType {Id = 2, Type = "None"},
-                new EmploymentType {Id = 3, Type = "Self-Employed"},
-                new EmploymentType {Id = 4, Type = "OFW"},
-                new EmploymentType {Id = 5, Type = "Retired"}
+                PersonalInformation = personalInformation,
+                CivilStatus = civilStatus,
+                Genders =gender,
+                ResidentialAddress = residentialAddress,
+                PermanentAddress = permanentAddress,
+                Suffixes = GetSuffixes()
             };
+            return View(viewModel);
         }
+
+        public ActionResult Details(int id)
+        {
+            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
+            var civilStatus = GetCivilStatus();
+            var gender = GetGenders();
+            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
+            var permanentAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.PermanentAddressId);
+
+            var viewModel = new PersonalInformationViewModel
+            {
+                PersonalInformation = personalInformation,
+                CivilStatus = civilStatus,
+                Genders = gender,
+                ResidentialAddress = residentialAddress,
+                PermanentAddress = permanentAddress,
+                Suffixes = GetSuffixes()
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult AddressForm(int id)
+        {
+            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
+            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
+            var viewModel = new PersonalInformationViewModel
+            {
+                PersonalInformation = personalInformation,
+                ResidentialAddress = residentialAddress
+            };
+            return View(viewModel);
+        }
+
     }
 }

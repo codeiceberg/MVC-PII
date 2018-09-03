@@ -1,0 +1,57 @@
+﻿@model PII.ViewModels.PersonalInformationViewModel
+@{
+    ViewBag.Title = "AddressForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddressForm", "PersonalInformation"))
+{
+    <div class="container">
+        <div class="row">
+            <div class="form-group-sm">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">RESIDENTIAL ADDRESS</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group-sm">
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.Street, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.Street, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.BarangayId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.BarangayId, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.CityMunicipalityId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.CityMunicipalityId, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.ProvinceId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.ProvinceId, new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.ResidentialAddress.Zip, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.ResidentialAddress.Zip, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="btn btn-default btn-sm float-right">
+                @Html.ActionLink("Save", "Details", "PersonalInformation", new { id = @Model.PersonalInformation.Id }, null)
+            </div>
+        </div>
+    </div>
+
+}

@@ -260,7 +260,7 @@
 }
 .card .card-body .control-label {
     text-align: right;
-    /*padding-top: 6px;*/
+    padding-top: 6px;
     margin: 0;
     vertical-align: middle;
     color: #9a9a9a;
@@ -304,10 +304,10 @@
 
 
 .card .panel .form-control {
-    text-align: center;
+    /*text-align: center;*/
     color: #9a9a9a;
     font-weight: normal;
-    margin-top: 0;
+    /*margin-top: 0;*/
 
   }
 
@@ -356,4 +356,11 @@ input[type='radio'], input[type='checkbox'] {
 .float-right {
     float:right!important;
     padding-right: 15px;
+}
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
 }
