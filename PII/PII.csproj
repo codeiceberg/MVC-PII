@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201808312201368_createEmploymentModels2.Designer.cs">
       <DependentUpon>201808312201368_createEmploymentModels2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809032006311_addCoordinatesToAddressModel.cs" />
+    <Compile Include="Migrations\201809032006311_addCoordinatesToAddressModel.Designer.cs">
+      <DependentUpon>201809032006311_addCoordinatesToAddressModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -479,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808312201368_createEmploymentModels2.resx">
       <DependentUpon>201808312201368_createEmploymentModels2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809032006311_addCoordinatesToAddressModel.resx">
+      <DependentUpon>201809032006311_addCoordinatesToAddressModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

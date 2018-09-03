@@ -28,5 +28,8 @@ namespace PII.Models
         public int? ProvinceId { get; set; }
 
         public int? Zip { get; set; }
+
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }
