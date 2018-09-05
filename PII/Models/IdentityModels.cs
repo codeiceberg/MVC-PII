@@ -28,6 +28,7 @@ namespace PII.Models
         public DbSet<EmploymentInformation> EmploymentInformations { get; set; }
         public DbSet<EmploymentRank> EmploymentRanks { get; set; }
         public DbSet<NatureOfBusiness> NatureOfBusinesses { get; set; }
+        public DbSet<AddressType> AddressTypes { get; set; }    
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

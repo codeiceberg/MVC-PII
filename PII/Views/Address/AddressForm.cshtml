@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("AddressForm", "PersonalInformation"))
+<h2>AddressForm</h2>
+
+@using (Html.BeginForm("AddressForm", "Address"))
 {
     <div class="container">
         <div class="row">
@@ -50,7 +52,7 @@
             </div>
             <br />
             <div class="btn btn-default btn-sm float-right">
-                @Html.ActionLink("Save", "Details", "PersonalInformation", new { id = @Model.Person.Id }, null)
+                @Html.ActionLink("Save", "Details", "PersonalDataSheet", new { id = @Model.Person.Id }, null)
             </div>
         </div>
     </div>

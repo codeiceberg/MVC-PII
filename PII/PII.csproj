@@ -196,10 +196,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\EmploymentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PersonalInformationController.cs" />
+    <Compile Include="Controllers\PersonalDataSheetController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -323,6 +325,14 @@
     <Compile Include="Migrations\201809051509031_renamePersonalInformationModelToPersonModel2.Designer.cs">
       <DependentUpon>201809051509031_renamePersonalInformationModelToPersonModel2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809051547080_addAddressTypeModelToDb.cs" />
+    <Compile Include="Migrations\201809051547080_addAddressTypeModelToDb.Designer.cs">
+      <DependentUpon>201809051547080_addAddressTypeModelToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809051548207_populateAddressType.cs" />
+    <Compile Include="Migrations\201809051548207_populateAddressType.Designer.cs">
+      <DependentUpon>201809051548207_populateAddressType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -345,6 +355,7 @@
     <Compile Include="ViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\EmploymentViewModel.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
+    <Compile Include="ViewModels\PersonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -409,11 +420,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\PersonalInformation\Index.cshtml" />
-    <Content Include="Views\PersonalInformation\PersonalForm.cshtml" />
     <Content Include="Views\Employment\EmploymentForm.cshtml" />
-    <Content Include="Views\PersonalInformation\Details.cshtml" />
-    <Content Include="Views\PersonalInformation\AddressForm.cshtml" />
+    <Content Include="Views\Address\AddressForm.cshtml" />
+    <Content Include="Views\Person\PersonForm.cshtml" />
+    <Content Include="Views\PersonalDataSheet\Details.cshtml" />
+    <Content Include="Views\PersonalDataSheet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -516,6 +527,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809051509031_renamePersonalInformationModelToPersonModel2.resx">
       <DependentUpon>201809051509031_renamePersonalInformationModelToPersonModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809051547080_addAddressTypeModelToDb.resx">
+      <DependentUpon>201809051547080_addAddressTypeModelToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809051548207_populateAddressType.resx">
+      <DependentUpon>201809051548207_populateAddressType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

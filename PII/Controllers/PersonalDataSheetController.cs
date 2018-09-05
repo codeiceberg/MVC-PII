@@ -8,11 +8,11 @@ using PII.ViewModels;
 
 namespace PII.Controllers
 {
-    public class PersonalInformationController : Controller
+    public class PersonalDataSheetController : Controller
     {
         private ApplicationDbContext _context;
 
-        public PersonalInformationController()
+        public PersonalDataSheetController()
         {
             _context = new ApplicationDbContext();
         }
@@ -20,14 +20,6 @@ namespace PII.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
-        }
-
-
-        // GET: PersonalInformation
-        public ActionResult Index()
-        {
-            var personalInformation = _context.Persons.ToList();
-            return View(personalInformation);
         }
 
         public List<CivilStatus> GetCivilStatus()
@@ -64,28 +56,10 @@ namespace PII.Controllers
             };
         }
 
-        public List<AddressType> GetAddressTypes()
+        public ActionResult Index()
         {
-            return new List<AddressType>
-          {
-              new AddressType {Id = 1, Type = "Residential"},
-              new AddressType {Id = 2, Type = "Permanent"},
-              new AddressType {Id = 3, Type = "Business"}
-          };
-        }
-
-        public ActionResult PersonalForm(int id)
-        {
-            var personalInformation = _context.Persons.SingleOrDefault(c => c.Id == id);
-
-            var viewModel = new PersonalInformationViewModel
-            {
-                Person = personalInformation,
-                CivilStatus = GetCivilStatus(),
-                Genders = GetGenders(),
-                Suffixes = GetSuffixes()
-            };
-            return View(viewModel);
+            var personalInformation = _context.Persons.ToList();
+            return View(personalInformation);
         }
 
         public ActionResult Details(int id)
@@ -106,18 +80,8 @@ namespace PII.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddressForm(int ownersId, byte addressTypeId)
-        {
-            var person = _context.Persons.SingleOrDefault(c => c.Id == ownersId);
-            var address = _context.Address.SingleOrDefault(r => r.PersonalInformationId == person.Id && r.AddressTypeId == addressTypeId);
-            var viewModel = new AddressViewModel()
-            {
-                Person = person,
-                AddressType = GetAddressTypes(),
-                Address = address
-            };
-            return View(viewModel);
-        }
+
+
 
     }
 }

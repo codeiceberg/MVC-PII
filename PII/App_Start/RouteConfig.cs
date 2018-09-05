@@ -17,7 +17,7 @@ namespace PII
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                defaults: new { controller = "PersonalInformation", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "PersonalDataSheet", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
