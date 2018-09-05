@@ -307,9 +307,26 @@
     <Compile Include="Migrations\201809032006311_addCoordinatesToAddressModel.Designer.cs">
       <DependentUpon>201809032006311_addCoordinatesToAddressModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809042143316_redesignAddressModel.cs" />
+    <Compile Include="Migrations\201809042143316_redesignAddressModel.Designer.cs">
+      <DependentUpon>201809042143316_redesignAddressModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809050118472_updateAddressModelTypeId.cs" />
+    <Compile Include="Migrations\201809050118472_updateAddressModelTypeId.Designer.cs">
+      <DependentUpon>201809050118472_updateAddressModelTypeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809051502574_renamePersonalInformationModelToPersonModel.cs" />
+    <Compile Include="Migrations\201809051502574_renamePersonalInformationModelToPersonModel.Designer.cs">
+      <DependentUpon>201809051502574_renamePersonalInformationModelToPersonModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809051509031_renamePersonalInformationModelToPersonModel2.cs" />
+    <Compile Include="Migrations\201809051509031_renamePersonalInformationModelToPersonModel2.Designer.cs">
+      <DependentUpon>201809051509031_renamePersonalInformationModelToPersonModel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\Barangay.cs" />
     <Compile Include="Models\CityMunicipality.cs" />
     <Compile Include="Models\CivilStatus.cs" />
@@ -319,12 +336,13 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NatureOfBusiness.cs" />
-    <Compile Include="Models\PersonalInformation.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\Suffix.cs" />
     <Compile Include="Models\EmploymentInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\EmploymentViewModel.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
   </ItemGroup>
@@ -486,6 +504,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809032006311_addCoordinatesToAddressModel.resx">
       <DependentUpon>201809032006311_addCoordinatesToAddressModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042143316_redesignAddressModel.resx">
+      <DependentUpon>201809042143316_redesignAddressModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809050118472_updateAddressModelTypeId.resx">
+      <DependentUpon>201809050118472_updateAddressModelTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809051502574_renamePersonalInformationModelToPersonModel.resx">
+      <DependentUpon>201809051502574_renamePersonalInformationModelToPersonModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809051509031_renamePersonalInformationModelToPersonModel2.resx">
+      <DependentUpon>201809051509031_renamePersonalInformationModelToPersonModel2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

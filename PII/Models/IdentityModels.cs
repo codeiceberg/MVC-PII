@@ -20,7 +20,7 @@ namespace PII.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<PersonalInformation> PersonalInformations { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<Province> Province { get; set; }
         public DbSet<CityMunicipality> CityMunicipality { get; set; }

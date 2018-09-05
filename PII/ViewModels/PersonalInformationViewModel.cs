@@ -8,7 +8,7 @@ namespace PII.ViewModels
 {
     public class PersonalInformationViewModel
     {
-        public PersonalInformation PersonalInformation { get; set; }
+        public Person Person { get; set; }
         public IEnumerable<CivilStatus> CivilStatus { get; set; }
         public IEnumerable<Gender> Genders { get; set; }
         public IEnumerable<Suffix> Suffixes { get; set; }

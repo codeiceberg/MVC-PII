@@ -1,4 +1,4 @@
-﻿@model PII.ViewModels.PersonalInformationViewModel
+﻿@model PII.ViewModels.AddressViewModel
 @{
     ViewBag.Title = "AddressForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,30 +16,31 @@
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group-sm">
+                                <div class="form-group-sm">
+                                    <div class="col-sm-4">
+                                        @Html.LabelFor(m => m.Address.HouseBlockLotNo, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.HouseBlockLotNo, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.Street, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.Street, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.Street, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.Street, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.SubdivisionVillage, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.SubdivisionVillage, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.BarangayId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.BarangayId, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.BarangayId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.BarangayId, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.CityMunicipalityId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.CityMunicipalityId, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.CityMunicipalityId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.CityMunicipalityId, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.ProvinceId, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.ProvinceId, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.ResidentialAddress.ProvinceId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.ProvinceId, new { @class = "form-control" })
-
-                                        @Html.LabelFor(m => m.ResidentialAddress.Zip, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.ResidentialAddress.Zip, new { @class = "form-control" })
-
+                                        @Html.LabelFor(m => m.Address.Zip, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.Zip, new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="googleMap" style="width:100%;height:400px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -49,9 +50,38 @@
             </div>
             <br />
             <div class="btn btn-default btn-sm float-right">
-                @Html.ActionLink("Save", "Details", "PersonalInformation", new { id = @Model.PersonalInformation.Id }, null)
+                @Html.ActionLink("Save", "Details", "PersonalInformation", new { id = @Model.Person.Id }, null)
             </div>
         </div>
     </div>
 
+    <script>
+        function myMap() {
+            var myCenter = new google.maps.LatLng(14.642978, 121.0366274);
+            var mapOptions = { center: myCenter, zoom: 14 };
+            var mapCanvas = document.getElementById("googleMap");
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+
+            var infowindow = new google.maps.InfoWindow({ content: "Taga dito sya!" });
+                infowindow.open(map, marker);
+
+            google.maps.event.addListener(map, 'click', function (event) {placeMarker(map, event.latLng);});
+
+        }
+
+        function placeMarker(map, location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+            });
+            infowindow.open(map, marker);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=???&callback=myMap"></script>
 }

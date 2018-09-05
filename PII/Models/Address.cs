@@ -10,12 +10,12 @@ namespace PII.Models
     {
         public int Id { get; set; }
 
-        [Display (Name = "House/Block No.")]
+        [Display(Name = "House/Block No.")]
         public string HouseBlockLotNo { get; set; }
 
         public string Street { get; set; }
 
-        [Display (Name = "Subdivision/Village")]
+        [Display(Name = "Subdivision/Village")]
         public string SubdivisionVillage { get; set; }
 
         [Display(Name = "Barangay")]
@@ -31,5 +31,10 @@ namespace PII.Models
 
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+
+        public byte? AddressTypeId { get; set; }
+
+        public int? PersonalInformationId { get; set; }
+
     }
 }

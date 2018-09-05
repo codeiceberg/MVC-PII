@@ -26,7 +26,7 @@ namespace PII.Controllers
         // GET: PersonalInformation
         public ActionResult Index()
         {
-            var personalInformation = _context.PersonalInformations.ToList();
+            var personalInformation = _context.Persons.ToList();
             return View(personalInformation);
         }
 
@@ -64,21 +64,25 @@ namespace PII.Controllers
             };
         }
 
+        public List<AddressType> GetAddressTypes()
+        {
+            return new List<AddressType>
+          {
+              new AddressType {Id = 1, Type = "Residential"},
+              new AddressType {Id = 2, Type = "Permanent"},
+              new AddressType {Id = 3, Type = "Business"}
+          };
+        }
+
         public ActionResult PersonalForm(int id)
         {
-            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
-            var civilStatus = GetCivilStatus();
-            var gender = GetGenders();
-            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
-            var permanentAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.PermanentAddressId);
+            var personalInformation = _context.Persons.SingleOrDefault(c => c.Id == id);
 
             var viewModel = new PersonalInformationViewModel
             {
-                PersonalInformation = personalInformation,
-                CivilStatus = civilStatus,
-                Genders =gender,
-                ResidentialAddress = residentialAddress,
-                PermanentAddress = permanentAddress,
+                Person = personalInformation,
+                CivilStatus = GetCivilStatus(),
+                Genders = GetGenders(),
                 Suffixes = GetSuffixes()
             };
             return View(viewModel);
@@ -86,17 +90,15 @@ namespace PII.Controllers
 
         public ActionResult Details(int id)
         {
-            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
-            var civilStatus = GetCivilStatus();
-            var gender = GetGenders();
-            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
-            var permanentAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.PermanentAddressId);
+            var person = _context.Persons.SingleOrDefault(c => c.Id == id);
+            var residentialAddress = _context.Address.SingleOrDefault(r => r.PersonalInformationId == person.Id && r.AddressTypeId == 1);
+            var permanentAddress = _context.Address.SingleOrDefault(p => p.PersonalInformationId == person.Id && p.AddressTypeId == 2);
 
             var viewModel = new PersonalInformationViewModel
             {
-                PersonalInformation = personalInformation,
-                CivilStatus = civilStatus,
-                Genders = gender,
+                Person = person,
+                CivilStatus = GetCivilStatus(),
+                Genders = GetGenders(),
                 ResidentialAddress = residentialAddress,
                 PermanentAddress = permanentAddress,
                 Suffixes = GetSuffixes()
@@ -104,14 +106,15 @@ namespace PII.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddressForm(int id)
+        public ActionResult AddressForm(int ownersId, byte addressTypeId)
         {
-            var personalInformation = _context.PersonalInformations.SingleOrDefault(c => c.Id == id);
-            var residentialAddress = _context.Address.SingleOrDefault(c => c.Id == personalInformation.ResidentialAddressId);
-            var viewModel = new PersonalInformationViewModel
+            var person = _context.Persons.SingleOrDefault(c => c.Id == ownersId);
+            var address = _context.Address.SingleOrDefault(r => r.PersonalInformationId == person.Id && r.AddressTypeId == addressTypeId);
+            var viewModel = new AddressViewModel()
             {
-                PersonalInformation = personalInformation,
-                ResidentialAddress = residentialAddress
+                Person = person,
+                AddressType = GetAddressTypes(),
+                Address = address
             };
             return View(viewModel);
         }

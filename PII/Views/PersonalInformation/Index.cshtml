@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PII.Models.PersonalInformation>
+﻿@model IEnumerable<PII.Models.Person>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -22,15 +22,15 @@ else
         </thead>
 
         <tbody>
-            @foreach (var personalInfo in Model)
+            @foreach (var person in Model)
             {
                 <tr>
                     <td>
-                        @personalInfo.FistName
-                        @personalInfo.LastName
-                        @personalInfo.MiddleName
+                        @person.FistName
+                        @person.LastName
+                        @person.MiddleName
                     </td>
-                    <td>@Html.ActionLink("Details", "Details", "PersonalInformation", new { id = personalInfo.Id }, null) &raquo;</td>
+                    <td>@Html.ActionLink("Details", "Details", "PersonalInformation", new { id = person.Id }, null) &raquo;</td>
                 </tr>
             }
         </tbody>

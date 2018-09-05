@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PII.Models
 {
-    public class PersonalInformation
+    public class Person
     {
         public int Id { get; set; }
         public string Status { get; set; }
@@ -15,7 +15,7 @@ namespace PII.Models
         public string FistName { get; set; }
         public string MiddleName { get; set; }
 
-        [Display (Name = "Suffix")]
+        [Display(Name = "Suffix")]
         public string NameExtension { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
@@ -34,9 +34,9 @@ namespace PII.Models
         public string TinNo { get; set; }
         public string AgencyEmployeeNo { get; set; }
         public string Citizenship { get; set; }
-        public int ResidentialAddressId { get; set; }
-        public int PermanentAddressId { get; set; }
-        public int BusinessAddressId { get; set; }
+        //public int ResidentialAddressId { get; set; }
+        //public int PermanentAddressId { get; set; }
+        //public int BusinessAddressId { get; set; }
         public int TelephoneNo { get; set; }
         public int MobileNo { get; set; }
         public string EmailAddress { get; set; }
