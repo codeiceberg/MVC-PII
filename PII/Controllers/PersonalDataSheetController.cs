@@ -65,8 +65,8 @@ namespace PII.Controllers
         public ActionResult Details(int id)
         {
             var person = _context.Persons.SingleOrDefault(c => c.Id == id);
-            var residentialAddress = _context.Address.SingleOrDefault(r => r.PersonalInformationId == person.Id && r.AddressTypeId == 1);
-            var permanentAddress = _context.Address.SingleOrDefault(p => p.PersonalInformationId == person.Id && p.AddressTypeId == 2);
+            var residentialAddress = _context.Address.SingleOrDefault(r => r.PersonId == person.Id && r.AddressTypeId == 1);
+            var permanentAddress = _context.Address.SingleOrDefault(p => p.PersonId == person.Id && p.AddressTypeId == 2);
 
             var viewModel = new PersonalInformationViewModel
             {

@@ -19,22 +19,26 @@ namespace PII.Models
         public string SubdivisionVillage { get; set; }
 
         [Display(Name = "Barangay")]
-        public int? BarangayId { get; set; }
+        public Barangay Barangay { get; set; }
+        public int BarangayId { get; set; }
 
         [Display(Name = "City/Municipality")]
-        public int? CityMunicipalityId { get; set; }
+        public CityMunicipality CityMunicipality { get; set; }
+        public int CityMunicipalityId { get; set; }
 
         [Display(Name = "Province")]
-        public int? ProvinceId { get; set; }
+        public Province Province { get; set; }
+        public int ProvinceId { get; set; }
 
         public int? Zip { get; set; }
 
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
 
-        public byte? AddressTypeId { get; set; }
+        public byte AddressTypeId { get; set; }
 
-        public int? PersonalInformationId { get; set; }
+        public Person Person { get; set; }
+        public int? PersonId { get; set; }
 
     }
 }

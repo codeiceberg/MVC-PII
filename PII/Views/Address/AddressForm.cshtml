@@ -1,4 +1,5 @@
-﻿@model PII.ViewModels.AddressViewModel
+﻿@using System.Collections.ObjectModel
+@model PII.ViewModels.AddressViewModel
 @{
     ViewBag.Title = "AddressForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,29 +20,29 @@
                         <div class="form-horizontal">
                             <div class="row">
                                 <div class="form-group-sm">
-                                    <div class="col-sm-4">
-                                        @Html.LabelFor(m => m.Address.HouseBlockLotNo, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Address.HouseBlockLotNo, new { @class = "form-control" })
+                                    <div class="col-sm-3">
+                                        @Html.LabelFor(m => m.Address.ProvinceId, new { @class = "control-label" })
+                                        @Html.DropDownListFor(m => m.Address.ProvinceId, new SelectList(Model.Provinces, "Id", "Name"), "--- Province ---", new {@class ="form-control"})
 
-                                        @Html.LabelFor(m => m.Address.Street, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Address.Street, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.CityMunicipalityId, new { @class = "control-label" })
+                                        @Html.DropDownListFor(m => m.Address.CityMunicipalityId, new SelectList(Model.CityMunicipalities, "Id", "Name"), "--- City ---", new { @class = "form-control" })
+
+                                        @Html.LabelFor(m => m.Address.BarangayId, new { @class = "control-label" })
+                                        @Html.DropDownListFor(m => m.Address.BarangayId, new SelectList(Model.Barangays, "Id", "Name"), "--- Barangay ---", new { @Class = "form-control" })
 
                                         @Html.LabelFor(m => m.Address.SubdivisionVillage, new { @class = "control-label" })
                                         @Html.TextBoxFor(m => m.Address.SubdivisionVillage, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.Address.BarangayId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Address.BarangayId, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.Street, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.Street, new { @class = "form-control" })
 
-                                        @Html.LabelFor(m => m.Address.CityMunicipalityId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Address.CityMunicipalityId, new { @class = "form-control" })
-
-                                        @Html.LabelFor(m => m.Address.ProvinceId, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Address.ProvinceId, new { @class = "form-control" })
+                                        @Html.LabelFor(m => m.Address.HouseBlockLotNo, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.HouseBlockLotNo, new { @class = "form-control" })
 
                                         @Html.LabelFor(m => m.Address.Zip, new { @class = "control-label" })
                                         @Html.TextBoxFor(m => m.Address.Zip, new { @class = "form-control" })
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                         <div id="googleMap" style="width:100%;height:400px;"></div>
                                     </div>
                                 </div>
@@ -57,33 +58,60 @@
         </div>
     </div>
 
-    <script>
-        function myMap() {
-            var myCenter = new google.maps.LatLng(14.642978, 121.0366274);
-            var mapOptions = { center: myCenter, zoom: 14 };
-            var mapCanvas = document.getElementById("googleMap");
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            var marker = new google.maps.Marker({ position: myCenter });
+    @section Scripts {
+        <script>
+            function myMap() {
+                var myCenter = new google.maps.LatLng(14.642978, 121.0366274);
+                var mapOptions = { center: myCenter, zoom: 14 };
+                var mapCanvas = document.getElementById("googleMap");
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                var marker = new google.maps.Marker({ position: myCenter });
                 marker.setMap(map);
 
-            var infowindow = new google.maps.InfoWindow({ content: "Taga dito sya!" });
+                var infowindow = new google.maps.InfoWindow({ content: "Taga dito sya!" });
                 infowindow.open(map, marker);
 
-            google.maps.event.addListener(map, 'click', function (event) {placeMarker(map, event.latLng);});
+                google.maps.event.addListener(map, 'click', function (event) { placeMarker(map, event.latLng); });
 
-        }
+            }
 
-        function placeMarker(map, location) {
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
+            function placeMarker(map, location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+                });
+                infowindow.open(map, marker);
+            }
+
+            $('#Address_ProvinceId').change(function () {
+                var province = $("#Address_ProvinceId").val();
+                var city = $('#Address_CityMunicipalityId');
+                    city.empty();
+                if (province != null && province !== ''){
+                    $.getJSON('@Url.Action("GetCity")', { provinceId: province }, function (cities) {
+                        if (cities != null && !jQuery.isEmptyObject(cities)){
+                            city.append($('<option/>',{
+                                value: null,
+                                text: ""
+                            }));
+                            $.each($.parseJSON(cities), function (index, location) {
+                                city.append($('<option/>', {
+                                    value: location.Id,
+                                    text: location.Name
+                                }));
+                            });
+                        };
+                    });
+                }
             });
-            var infowindow = new google.maps.InfoWindow({
-                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-            });
-            infowindow.open(map, marker);
-        }
-    </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=???&callback=myMap"></script>
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=???&callback=myMap"></script>
+    }
+
+
+
 }
