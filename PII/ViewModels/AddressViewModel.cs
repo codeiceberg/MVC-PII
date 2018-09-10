@@ -13,7 +13,7 @@ namespace PII.ViewModels
         public Address Address { get; set; }
         public IEnumerable<AddressType> AddressTypes { get; set; }
         public IEnumerable<Province> Provinces { get; set; }
-        public IEnumerable<CityMunicipality> CityMunicipalities { get; set; }
+        public IEnumerable<City> Cities { get; set; }
         public IEnumerable<Barangay> Barangays { get; set; }
     }
 }

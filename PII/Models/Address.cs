@@ -23,8 +23,8 @@ namespace PII.Models
         public int BarangayId { get; set; }
 
         [Display(Name = "City/Municipality")]
-        public CityMunicipality CityMunicipality { get; set; }
-        public int CityMunicipalityId { get; set; }
+        public City City { get; set; }
+        public int CityId { get; set; }
 
         [Display(Name = "Province")]
         public Province Province { get; set; }

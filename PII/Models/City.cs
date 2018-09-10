@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PII.Models
 {
-    public class CityMunicipality
+    public class City
     {
         public int Id { get; set; }
         [Required]

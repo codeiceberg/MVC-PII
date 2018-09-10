@@ -13,8 +13,8 @@ namespace PII.Models
         [MaxLength(64)]
         public string Name { get; set; }
 
-        public CityMunicipality CityMunicipality { get; set; }
-        public int CityMunicipalityId { get; set; }
+        public City City { get; set; }
+        public int CityId { get; set; }
         public int Zip { get; set; }
         public string WebLink { get; set; }
     }

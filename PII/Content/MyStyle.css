@@ -5,8 +5,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+	  -ms-flex-direction: column;
+		  flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
@@ -32,8 +32,8 @@
 
 .card-body {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+	  -ms-flex: 1 1 auto;
+		  flex: 1 1 auto;
   padding: 1.25rem;
   /*background-image: linear-gradient(white, #e9ecef 60%, #e3e7eb);*/
   /*background-color:#f1f2f6;*/
@@ -129,8 +129,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+	  -ms-flex-direction: column;
+		  flex-direction: column;
 }
 
 .card-deck .card {
@@ -139,27 +139,27 @@
 
 @media (min-width: 576px) {
   .card-deck {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+		-ms-flex-flow: row wrap;
+			flex-flow: row wrap;
+	margin-right: -15px;
+	margin-left: -15px;
   }
   .card-deck .card {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 0%;
-            flex: 1 0 0%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-right: 15px;
-    margin-bottom: 0;
-    margin-left: 15px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-flex: 1;
+		-ms-flex: 1 0 0%;
+			flex: 1 0 0%;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+			flex-direction: column;
+	margin-right: 15px;
+	margin-bottom: 0;
+	margin-left: 15px;
   }
 }
 
@@ -169,8 +169,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+	  -ms-flex-direction: column;
+		  flex-direction: column;
 }
 
 .card-group > .card {
@@ -179,66 +179,66 @@
 
 @media (min-width: 576px) {
   .card-group {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+		-ms-flex-flow: row wrap;
+			flex-flow: row wrap;
   }
   .card-group > .card {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 0%;
-            flex: 1 0 0%;
-    margin-bottom: 0;
+	-webkit-box-flex: 1;
+		-ms-flex: 1 0 0%;
+			flex: 1 0 0%;
+	margin-bottom: 0;
   }
   .card-group > .card + .card {
-    margin-left: 0;
-    border-left: 0;
+	margin-left: 0;
+	border-left: 0;
   }
   .card-group > .card:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
   }
   .card-group > .card:first-child .card-img-top,
   .card-group > .card:first-child .card-header {
-    border-top-right-radius: 0;
+	border-top-right-radius: 0;
   }
   .card-group > .card:first-child .card-img-bottom,
   .card-group > .card:first-child .card-footer {
-    border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0;
   }
   .card-group > .card:last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
   }
   .card-group > .card:last-child .card-img-top,
   .card-group > .card:last-child .card-header {
-    border-top-left-radius: 0;
+	border-top-left-radius: 0;
   }
   .card-group > .card:last-child .card-img-bottom,
   .card-group > .card:last-child .card-footer {
-    border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
   }
   .card-group > .card:only-child {
-    border-radius: 0.25rem;
+	border-radius: 0.25rem;
   }
   .card-group > .card:only-child .card-img-top,
   .card-group > .card:only-child .card-header {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
   }
   .card-group > .card:only-child .card-img-bottom,
   .card-group > .card:only-child .card-footer {
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
   }
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) {
-    border-radius: 0;
+	border-radius: 0;
   }
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-top,
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-bottom,
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-header,
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-footer {
-    border-radius: 0;
+	border-radius: 0;
   }
 }
 
@@ -248,114 +248,114 @@
 
 @media (min-width: 576px) {
   .card-columns {
-    -webkit-column-count: 3;
-            column-count: 3;
-    -webkit-column-gap: 1.25rem;
-            column-gap: 1.25rem;
+	-webkit-column-count: 3;
+			column-count: 3;
+	-webkit-column-gap: 1.25rem;
+			column-gap: 1.25rem;
   }
   .card-columns .card {
-    display: inline-block;
-    width: 100%;
+	display: inline-block;
+	width: 100%;
   }
 }
 .card .card-body .control-label {
-    text-align: right;
-    padding-top: 6px;
-    margin: 0;
-    vertical-align: middle;
-    color: #9a9a9a;
+	text-align: right;
+	padding-top: 6px;
+	margin: 0;
+	vertical-align: middle;
+	color: #9a9a9a;
 }
 
 .card label {
-    font-size: 1.1rem;
-    margin-top: 5px;
-    /*margin-bottom: 5px;*/
+	font-size: 1.1rem;
+	margin-top: 5px;
+	/*margin-bottom: 5px;*/
 }
 
 .card input, select, textarea {
-    box-shadow: none;
-    max-width: 100%;
-    margin-top: 2px;
+	box-shadow: none;
+	max-width: 100%;
+	margin-top: 2px;
 }
 
 .card .radio, .checkbox {
-    margin-top: 5px;
-    margin-bottom: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .card .panel {
-    margin: 2px 15px 15px;
+	margin: 2px 15px 15px;
 }
 
 .card .panel-heading {
-    padding: 7px 15px 3px;
+	padding: 7px 15px 3px;
 }
 
 .card .panel-title {
-    font-size: 12px;
-    /*color: #9a9a9a;*/
-    text-transform: uppercase;
-    font-weight: bold;
+	font-size: 12px;
+	/*color: #9a9a9a;*/
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .card .panel-body {
-    padding: 7px 15px 3px;
+	padding: 7px 15px 3px;
 }
 
 
 .card .panel .form-control {
-    /*text-align: center;*/
-    color: #9a9a9a;
-    font-weight: normal;
-    /*margin-top: 0;*/
+	/*text-align: center;*/
+	color: #9a9a9a;
+	font-weight: normal;
+	/*margin-top: 0;*/
 
   }
 
 .card .panel .btn {
-    height: 25px;
-    padding: 0 8px;
-    height: 27px;
-    text-align: center;
-    border-color: whitesmoke;
-    border-bottom-color: lightgray;
+	height: 25px;
+	padding: 0 8px;
+	height: 27px;
+	text-align: center;
+	border-color: whitesmoke;
+	border-bottom-color: lightgray;
 }
 .card .address-label {
-    width: 100%;
-    font-style: italic;
-    font-size: .65em;
-    text-align: center;
-    vertical-align: middle;
+	width: 100%;
+	font-style: italic;
+	font-size: .65em;
+	text-align: center;
+	vertical-align: middle;
 }
 
 
 input[type='radio'], input[type='checkbox'] {
-    margin: 0 0 0;
-    margin-top: 1px \9;
-    line-height: normal;
+	margin: 0 0 0;
+	margin-top: 1px \9;
+	line-height: normal;
 }
 
 
 .form-group-sm .form-control {
-    height: 27px;
-    vertical-align:middle;
+	height: 27px;
+	vertical-align:middle;
 
 }
 
 
 .form-group-sm select.form-control {
-    height: 27px;
+	height: 27px;
 }
 /*media all*/
 .block {
-    padding: 6px;
-    margin: 10px 0;
-    border: 1px solid #cdd9e6;
+	padding: 6px;
+	margin: 10px 0;
+	border: 1px solid #cdd9e6;
 }
 
 /*media all*/
 .float-right {
-    float:right!important;
-    padding-right: 15px;
+	float:right!important;
+	padding-right: 15px;
 }
 
 .pull-left {
@@ -363,4 +363,16 @@ input[type='radio'], input[type='checkbox'] {
 }
 .pull-right {
   float: right !important;
+}
+
+.uitooltip {
+	padding: 7px;
+	background:greenyellow;
+	position: absolute;
+	max-width: 300px;
+	-webkit-box-shadow: 0 0 5px #aaa;
+	box-shadow: 0 0 5px #aaa;
+	font-size: 13px;
+	white-space: pre-line;
+	border-radius: 5px;
 }

@@ -345,12 +345,16 @@
     <Compile Include="Migrations\201809051905375_updateAddressModel1.Designer.cs">
       <DependentUpon>201809051905375_updateAddressModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809101319525_renameCityMunicipalityModel.cs" />
+    <Compile Include="Migrations\201809101319525_renameCityMunicipalityModel.Designer.cs">
+      <DependentUpon>201809101319525_renameCityMunicipalityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\Barangay.cs" />
-    <Compile Include="Models\CityMunicipality.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\CivilStatus.cs" />
     <Compile Include="Models\EmploymentRank.cs" />
     <Compile Include="Models\EmploymentType.cs" />
@@ -554,6 +558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809051905375_updateAddressModel1.resx">
       <DependentUpon>201809051905375_updateAddressModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101319525_renameCityMunicipalityModel.resx">
+      <DependentUpon>201809101319525_renameCityMunicipalityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
