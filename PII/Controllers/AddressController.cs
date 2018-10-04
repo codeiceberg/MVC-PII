@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PII.Models;
+﻿using PII.Models;
 using PII.ViewModels;
+using System.Linq;
+using System.Text;
+using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 
 
 namespace PII.Controllers
@@ -52,7 +49,6 @@ namespace PII.Controllers
             var person = _context.Persons.SingleOrDefault(c => c.Id == ownersId);
             var addressType = _context.AddressTypes.ToList();
             var address = _context.Address.SingleOrDefault(c => c.PersonId == person.Id && c.AddressTypeId == addressTypeId);
-
             var province = _context.Province.Where(c => c.Id == address.ProvinceId);
             var cityMunicipality = _context.Cities.Where(c => c.ProvinceId == address.ProvinceId);
             var barangay = _context.Barangays.Where(c => c.CityId == address.CityId);
@@ -68,6 +64,62 @@ namespace PII.Controllers
 
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Address address)
+        {
+            if (address.Id == 0)
+            {
+                _context.Address.Add(address);
+            }
+            else
+            {
+                var addressInDb = _context.Address.Single(m => m.Id == address.Id);
+                addressInDb.ProvinceId = address.ProvinceId;
+                addressInDb.CityId = address.CityId;
+                addressInDb.BarangayId = address.BarangayId;
+                addressInDb.Street = address.Street;
+                addressInDb.SubdivisionVillage = address.SubdivisionVillage;
+                addressInDb.HouseBlockLotNo = address.HouseBlockLotNo;
+                addressInDb.Latitude = address.Latitude;
+                addressInDb.Longitude = address.Longitude;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "PersonalDataSheet");
+        }
+
+        [HttpGet]
+        public string GetFullAddress(int personId, byte addressTypeId)
+        {
+            var addresses = _context.Address;
+            var provinces = _context.Province;
+            var cities = _context.Cities;
+            var barangays = _context.Barangays;
+            var fullAddress = new StringBuilder();
+
+            var query = addresses.Join(provinces, adr => adr.ProvinceId, prov => prov.Id,
+                    (adr, prov) => new { _location = adr, _province = prov })
+                .Join(cities, adrProv => adrProv._location.CityId, cty => cty.Id,
+                    (provLoc, cty) => new { _provLoc = provLoc, _city = cty })
+                .Join(barangays, adrProvCity => adrProvCity._provLoc._location.BarangayId, brgy => brgy.Id,
+                    (adrProvCity, brgy) => new { _adrProvCity = adrProvCity, _brgy = brgy })
+                .Where(
+                    c =>
+                        c._adrProvCity._provLoc._location.PersonId == personId &&
+                        c._adrProvCity._provLoc._location.AddressTypeId == addressTypeId);
+
+            foreach (var location in query)
+            {
+                fullAddress.Append(location._adrProvCity._provLoc._location.HouseBlockLotNo + " " +
+                                   location._adrProvCity._provLoc._location.Street + ", " +
+                                   location._adrProvCity._provLoc._location.SubdivisionVillage + ", " +
+                                   location._brgy.Name + ", " +
+                                   location._adrProvCity._city.Name + " " +
+                                   location._adrProvCity._provLoc._province.Name);
+            }
+            return fullAddress.ToString();
         }
     }
 }

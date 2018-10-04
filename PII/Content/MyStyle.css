@@ -376,3 +376,99 @@ input[type='radio'], input[type='checkbox'] {
 	white-space: pre-line;
 	border-radius: 5px;
 }
+
+.side-col {
+	margin-top: 15px;
+	border: #dfe6e9 .5px solid;
+	padding: 10px 10px 25px 10px;
+	background: #F6F6F6;
+	border-radius: 8px;
+	border-top-right-radius: 0;
+}
+
+.main-col {
+	margin-top: 15px;
+	border: #EBF2F5 .5px solid;
+	padding: 10px 20px 25px 30px;
+	background: #FFFFFF;
+	border-radius: 8px;
+	border-top-left-radius: 0
+}
+.img-circle {
+	padding: 3px;
+	border:#219EE7 1.5px solid;
+	box-shadow: 0 0 15px #4AB2EF;
+}
+.profile {
+	text-align: center;
+	margin: 10px;
+}
+
+.profile .profile-name {
+	margin-top: 5px;
+	font-size: 14px;
+	font-family: Times New Roman;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #219EE7;
+}
+.profile .profile-title {
+	font-size: 12px;
+	font-style: italic;
+	line-height: 9px;
+}
+
+.pin {
+	width: 100%;
+}
+
+.pin .pin-icon{
+	width: 27px;
+	height: 27px;
+	border:#D3D3D3 2px solid;
+	border-radius: 50%;
+	box-shadow: 0 0 10px #C0C0C0;
+	transition: .2s;
+	display: inline-block;
+}
+
+.pin .pin-icon .glyphicon{
+	width: 100%;
+	font-size: 11px;
+	text-align: center;
+	vertical-align: middle;
+	color: dodgerblue;
+}
+.pin .pin-icon:hover {
+	box-shadow: 0 0 18px #1E90FF;
+	border-color: dodgerblue;
+}
+
+.pin .pin-icon .pin-title{
+	position:absolute;
+	text-align: right;
+	font-size: 11px;
+	text-transform: uppercase;
+	line-height: 12px;
+	width:calc(100% - 55px);
+	color:#219EE7;
+	border-bottom: #DCDCDC 1.3px solid;
+
+}
+
+.pin .pin-content {
+	width: 95%;
+	font-size: .8em;
+	padding: 5px 5px 5px 50px;
+	text-align: justify;
+}
+
+.pin .pin-content span {
+	padding-right: 5px;
+	font-size: .9em;
+}
+
+
+.modal table {
+    font-size: .8em;
+}

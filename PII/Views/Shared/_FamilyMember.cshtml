@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PII.Models.RelationshipConnection>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Relationship</th>
+                <th>Name</th>
+                <th>Occupation</th>
+                <th>Date of Birth</th>
+
+        </thead>
+        <tbody>
+            @foreach (var member in Model)
+            {
+                <tr>
+                    <td>@member.RelationshipChart.Relationship</td>
+                    <td>@member.Person2.FirstName @member.Person2.LastName @member.Person2.MiddleName</td>
+                    <td>@member.Person2.Title</td>
+                    <td>@member.Person2.DateOfBirth</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+

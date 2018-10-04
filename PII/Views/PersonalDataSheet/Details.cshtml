@@ -1,4 +1,6 @@
-﻿@model PII.ViewModels.PersonalInformationViewModel
+﻿@using System.Activities.Statements
+@using PII.Models
+@model PII.ViewModels.PersonalInformationViewModel
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,382 +8,244 @@
 
 @using (Html.BeginForm("Details", "PersonalDataSheet"))
 {
-    <div class="container">
+    <div class="form-horizontal">
         <div class="row">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Personal Data Sheet</h4>
+            <div class="col-sm-3">
+                <div class="row side-col">
+                    <div class="profile form-group-sm">
+                        <img class="img-circle" style="width: 115px; height: 115px;" src="~/image/Avatar.jpg">
+                        <div class="profile-name">
+                            @Html.DisplayTextFor(m => m.Person.FirstName)
+                            @Html.DisplayTextFor(m => m.Person.LastName)
+                            @Html.DisplayTextFor(m => m.Person.MiddleName)
+                        </div>
+                        <div class="profile-title">
+                            @Html.DisplayTextFor(m => m.Person.Title)
+                        </div>
+                    </div>
+
+                    <div class="pin">
+                        <div class="pin-icon">
+                            @*<span class="glyphicon glyphicon-pencil"></span>*@
+                            @Html.ActionLink(".", "PersonForm", "Person", new {id = @Model.Person.Id}, htmlAttributes: new {@class = "glyphicon glyphicon-pencil"})
+                            <a class="pin-title">Biography</a>
+                        </div>
+                        <div class="pin-content">
+                            <div class="row">
+                                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="pin">
+                        <div class="pin-icon">
+                            <span class="glyphicon glyphicon-glass"></span>
+                            <a class="pin-title">Vitals</a>
+                        </div>
+                        <div class="pin-content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <span class="glyphicon glyphicon-leaf"></span>
+                                        @Html.DisplayTextFor(m => m.Person.Gender)
+                                    </div>
+                                    <div class="row">
+                                        <span class="glyphicon glyphicon-flag"></span>
+                                        @Html.DisplayTextFor(m => m.Person.Citizenship)
+                                    </div>
+                                    <div class="row">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        @Html.DisplayTextFor(m => m.Person.CivilStatus)
+                                    </div>
+                                    <div class="row">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        @Html.DisplayTextFor(m => m.Person.DateOfBirth)
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.Height) :
+                                        @Html.DisplayTextFor(m => m.Person.Height) cm
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.Weight) :
+                                        @Html.DisplayTextFor(m => m.Person.Weight) kg
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.BloodType) :
+                                        @Html.DisplayTextFor(m => m.Person.BloodType)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <br />
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.TinNo) :
+                                        @Html.DisplayTextFor(m => m.Person.TinNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.SssNo) :
+                                        @Html.DisplayTextFor(m => m.Person.SssNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.GsisNo) :
+                                        @Html.DisplayTextFor(m => m.Person.GsisNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.PagibigNo) :
+                                        @Html.DisplayTextFor(m => m.Person.PagibigNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.PhilhealthNo) :
+                                        @Html.DisplayTextFor(m => m.Person.PhilhealthNo)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="pin">
+                        <div class="pin-icon">
+                            <span class="glyphicon glyphicon-phone"></span>
+                            <a class="pin-title">Contact</a>
+                        </div>
+                        <div class="pin-content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.MobileNo) :
+                                        @Html.DisplayTextFor(m => m.Person.MobileNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.TelephoneNo) :
+                                        @Html.DisplayTextFor(m => m.Person.TelephoneNo)
+                                    </div>
+                                    <div class="row">
+                                        @Html.DisplayNameFor(m => m.Person.EmailAddress) :
+                                        @Html.DisplayTextFor(m => m.Person.EmailAddress)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form class="form-horizontal">
-                        <span class="pull-right" style="font-size: small">
-                            @Html.ActionLink("...", "PersonForm", "Person", new { id = @Model.Person.Id }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" })
-                        </span>
-                        <br />
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <div class="form-group-sm">
-                                    <div class="row">
-                                        <label class="col-sm-3 control-label">
-                                            @Html.LabelFor(m => m.Person.LastName)
-                                        </label>
-                                        <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.Person.LastName, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <label class="col-sm-3 control-label">
-                                            @Html.LabelFor(m => m.Person.FistName)
-                                        </label>
-                                        <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.Person.FistName, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <label class="col-sm-3 control-label">
-                                                @Html.LabelFor(m => m.Person.MiddleName)
-                                            </label>
-                                            <div class="col-sm-9">
-                                                @Html.TextBoxFor(m => m.Person.MiddleName, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="form-group-sm">
-                                                    <label class="col-sm-3 control-label">
-                                                        @Html.LabelFor(m => m.Person.NameExtension)
-                                                    </label>
-                                                    <div class="col-sm-3">
-                                                        @Html.DropDownListFor(m => m.Person.NameExtension, new SelectList(Model.Suffixes, "Id", "Type"), "Suffix", new { @class = "form-control input-sm" })
-                                                    </div>
-                                                    <div class="col-sm-3 control-label">
-                                                        @Html.LabelFor(m => m.Person.DateOfBirth)
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        @Html.TextBoxFor(m => m.Person.DateOfBirth, "{0:MMM d yyyy}", new { @class = "form-control" })
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <label class="col-sm-3 control-label">
-                                                @Html.LabelFor(m => m.Person.Gender)
-                                            </label>
-                                            <div class="col-sm-3">
-                                                @Html.DropDownListFor(m => m.Person.Gender, new SelectList(Model.Genders, "Type", "Type"), new { @class = "form-control" })
-                                            </div>
+                <div class="row">
 
-                                            <label class="col-sm-3 control-label">
-                                                @Html.LabelFor(m => m.CivilStatus)
-                                            </label>
-                                            <div class="col-sm-3">
-                                                @Html.DropDownListFor(m => m.Person.CivilStatus, new SelectList(Model.CivilStatus, "Status", "Status"), new { @class = "form-control input-sm" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <div class="col-sm-3 control-label">
-                                                @Html.LabelFor(m => m.Person.PlateOfBirthAddressId)
-                                            </div>
-                                            <div class="col-sm-9">
-                                                @Html.TextBoxFor(m => m.Person.PlateOfBirthAddressId, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group-sm">
-                                            <label class="col-sm-3 control-label">
-                                                @Html.LabelFor(m => m.Person.EmailAddress)
-                                            </label>
-                                            <div class="col-sm-9">
-                                                @Html.TextBoxFor(m => m.Person.EmailAddress, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="form-group-sm float-right">
-                                        <img class="img-thumbnail" style="width: 140px; height: 140px;" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIG1lZXQiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48IS0tClNvdXJjZSBVUkw6IGhvbGRlci5qcy8xNDB4MTQwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPiNob2xkZXJfMTY1OGI3MzE5OGUgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gPC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjU4YjczMTk4ZSI+PHJlY3QgZmlsbD0iI2VlZWVlZSIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNDAiIC8+PGc+PHRleHQgeD0iNDQuMDY1IiB5PSI3NC41OTkiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-src="holder.js/140x140" data-holder-rendered="true">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.Height)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.Height, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.Weight)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.Weight, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.BloodType)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.BloodType, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.GsisNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.GsisNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.TinNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.TinNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.SssNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.SssNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.PhilhealthNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.PhilhealthNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.PagibigNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.PagibigNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.MobileNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.MobileNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.TelephoneNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.TelephoneNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <label class="col-sm-6 control-label">
-                                            @Html.LabelFor(m => m.Person.AgencyEmployeeNo)
-                                        </label>
-                                        <div class="col-sm-6">
-                                            @Html.TextBoxFor(m => m.Person.AgencyEmployeeNo, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-12 ">
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">
-                                                    RESIDENTIAL ADDRESS
-                                                    <span class="pull-right" style="font-size: small">
-                                                        @Html.ActionLink("...", "AddressForm", "Address", new { ownersId = Model.Person.Id, AddressTypeId = 1 }, new { @class = "glyphicon glyphicon-pencil" })
-                                                    </span>
-                                                </h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.HouseBlockLotNo, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.ResidentialAddress.Street, new { @class = " col-sm-1 control-label" })
-                                                        <div class="col-sm-6">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.Street, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.SubdivisionVillage, new { @class = "form-control" })
-                                                        </div>
-
-                                                        @Html.LabelFor(m => m.ResidentialAddress.BarangayId, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-6">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.BarangayId, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.ResidentialAddress.CityId, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.CityId, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.ResidentialAddress.ProvinceId, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.ProvinceId, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.ResidentialAddress.Zip, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-2">
-                                                            @Html.TextBoxFor(m => m.ResidentialAddress.Zip, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="form-group-sm">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">
-                                                    PERMANENT ADDRESS
-                                                    <span class="pull-right" style="font-size: small">
-                                                        @Html.ActionLink("...", "AddressForm", "Address", new { ownersId = Model.Person.Id, AddressTypeId = 2 }, new { @class = "glyphicon glyphicon-pencil" })
-                                                    </span>
-                                                </h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.PermanentAddress.HouseBlockLotNo, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.HouseBlockLotNo, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.PermanentAddress.Street, new { @class = " col-sm-1 control-label" })
-                                                        <div class="col-sm-6">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.Street, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.PermanentAddress.SubdivisionVillage, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.SubdivisionVillage, new { @class = "form-control" })
-                                                        </div>
-
-                                                        @Html.LabelFor(m => m.PermanentAddress.BarangayId, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-6">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.BarangayId, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-                                                        @Html.LabelFor(m => m.PermanentAddress.CityId, new { @class = "col-sm-2 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.CityId, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.PermanentAddress.ProvinceId, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-3">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.ProvinceId, new { @class = "form-control" })
-                                                        </div>
-                                                        @Html.LabelFor(m => m.PermanentAddress.Zip, new { @class = "col-sm-1 control-label" })
-                                                        <div class="col-sm-2">
-                                                            @Html.TextBoxFor(m => m.PermanentAddress.Zip, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group-sm">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
 
-        <br />
-        <div class="row">
+            <div class="col-sm-9 main-col">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pin">
+                            <div class="pin-icon">
+                                <span class="glyphicon glyphicon-book"></span>
+                                <a class="pin-title">Education</a>
+                            </div>
+                            <div class="pin-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sodales velit. Donec bibendum massa in rutrum hendrerit. Aliquam dolor odio, sollicitudin eget tortor id, dapibus pretium massa. Nullam quis ultrices ante. Mauris interdum enim eu metus luctus efficitur. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pin">
+                            <div class="pin-icon">
+                                <span class="glyphicon glyphicon-cloud"></span>
+                                <a class="pin-title">Work experience</a>
+                            </div>
+                            <div class="pin-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sodales velit. Donec bibendum massa in rutrum hendrerit. Aliquam dolor odio, sollicitudin eget tortor id, dapibus pretium massa. Nullam quis ultrices ante. Mauris interdum enim eu metus luctus efficitur. </p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Family Background</div>
-                <div class="panel-body">
-                    sample
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pin">
+                            <div class="pin-icon">
+                                <span class="glyphicon glyphicon-text-width"></span>
+                                <a class="pin-title">Professional Skills</a>
+                            </div>
+                            <div class="pin-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sodales velit. Donec bibendum massa in rutrum hendrerit. Aliquam dolor odio, sollicitudin eget tortor id, dapibus pretium massa. Nullam quis ultrices ante. Mauris interdum enim eu metus luctus efficitur. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pin">
+                            <div class="pin-icon">
+                                <span class="glyphicon glyphicon-map-marker"></span>
+                                <a class="pin-title">Address</a>
+                            </div>
+                            <div class="pin-content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        Residential: @Html.DisplayTextFor(m => m.ResidentialAddress)
+                                        <br />
+                                        Permanent: @Html.DisplayTextFor(m => m.PermanentAddress)
+                                        <br />
+                                        Business:
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pin">
+                            <div class="pin-icon">
+                                @*@Html.ActionLink(".", "RelationshipMapper", "RelationshipConnection", new { personId = @Model.Person.Id }, htmlAttributes: new {@class = "glyphicon glyphicon-asterisk", data_target = "#myModal", data_toggle = "modal"})*@
+                                @*@Html.ActionLink(".", "RelationshipMapper", "RelationshipConnection", new { personId = @Model.Person.Id }, htmlAttributes: new { @class = "glyphicon glyphicon-asterisk"})*@
+                                <a href="#" class="glyphicon glyphicon-asterisk" data-toggle="modal" data-target="#myModal"></a>
+                                <a class="pin-title">Family Background</a>
+                            </div>
+                            <div class="pin-content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @Html.Partial("_FamilyMember", Model.FamilyMembers)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal " id="myModal">
+                        <div class="modal-dialog  modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" aria-hidden="true" type="button" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Family Members</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-11 col-sm-offset-1">
+                                            @Html.Partial("_FindPerson", (IEnumerable<Person>) Model.Person)
+                                            @Html.Partial("_FamilyMemberMapper", Model.FamilyMembers)
+                                        </div>
+                                    </div>
+                                    
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-sm btn-primary" type="button">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 }
-
-

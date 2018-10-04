@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace PII.Models
@@ -12,15 +9,18 @@ namespace PII.Models
         public string Status { get; set; }
         public string Title { get; set; }
         public string LastName { get; set; }
-        public string FistName { get; set; }
+        public string FirstName { get; set; }
         public string MiddleName { get; set; }
 
         [Display(Name = "Suffix")]
         public string NameExtension { get; set; }
 
+        [Display(Name = "Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Place of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public int? PlateOfBirthAddressId { get; set; }
         public string Gender { get; set; }
         public string CivilStatus { get; set; }
@@ -40,7 +40,7 @@ namespace PII.Models
         public int TelephoneNo { get; set; }
         public int MobileNo { get; set; }
         public string EmailAddress { get; set; }
-        public int ParentId { get; set; }
+        //public int ParentId { get; set; }
         public string WhoChange { get; set; }
         public DateTime? WhenChange { get; set; }
         public string WhoAdd { get; set; }

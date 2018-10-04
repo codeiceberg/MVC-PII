@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonalDataSheetController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RelationshipConnectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -349,6 +350,62 @@
     <Compile Include="Migrations\201809101319525_renameCityMunicipalityModel.Designer.cs">
       <DependentUpon>201809101319525_renameCityMunicipalityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809202135533_updatePersonModelFirstName.cs" />
+    <Compile Include="Migrations\201809202135533_updatePersonModelFirstName.Designer.cs">
+      <DependentUpon>201809202135533_updatePersonModelFirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241933492_createRelationshipChartMOdel.cs" />
+    <Compile Include="Migrations\201809241933492_createRelationshipChartMOdel.Designer.cs">
+      <DependentUpon>201809241933492_createRelationshipChartMOdel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241936026_createRelationshipChartMOdel1.cs" />
+    <Compile Include="Migrations\201809241936026_createRelationshipChartMOdel1.Designer.cs">
+      <DependentUpon>201809241936026_createRelationshipChartMOdel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241949069_addRelationshipConnectionModel.cs" />
+    <Compile Include="Migrations\201809241949069_addRelationshipConnectionModel.Designer.cs">
+      <DependentUpon>201809241949069_addRelationshipConnectionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241952180_crateRelationshipConnectionModel.cs" />
+    <Compile Include="Migrations\201809241952180_crateRelationshipConnectionModel.Designer.cs">
+      <DependentUpon>201809241952180_crateRelationshipConnectionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241958158_updateRelationshipConnectionModel.cs" />
+    <Compile Include="Migrations\201809241958158_updateRelationshipConnectionModel.Designer.cs">
+      <DependentUpon>201809241958158_updateRelationshipConnectionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242001254_updateRelationshipConnectionModel2.cs" />
+    <Compile Include="Migrations\201809242001254_updateRelationshipConnectionModel2.Designer.cs">
+      <DependentUpon>201809242001254_updateRelationshipConnectionModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242008367_updateRelationshipConnectionModel3.cs" />
+    <Compile Include="Migrations\201809242008367_updateRelationshipConnectionModel3.Designer.cs">
+      <DependentUpon>201809242008367_updateRelationshipConnectionModel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242011566_updateRelationshipConnectionModel4.cs" />
+    <Compile Include="Migrations\201809242011566_updateRelationshipConnectionModel4.Designer.cs">
+      <DependentUpon>201809242011566_updateRelationshipConnectionModel4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242015290_removeRelationshipConnectionModel.cs" />
+    <Compile Include="Migrations\201809242015290_removeRelationshipConnectionModel.Designer.cs">
+      <DependentUpon>201809242015290_removeRelationshipConnectionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242017364_reCreateRelationshipConnectionModel.cs" />
+    <Compile Include="Migrations\201809242017364_reCreateRelationshipConnectionModel.Designer.cs">
+      <DependentUpon>201809242017364_reCreateRelationshipConnectionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809242028275_updatePersonModelRemoveParentIdField.cs" />
+    <Compile Include="Migrations\201809242028275_updatePersonModelRemoveParentIdField.Designer.cs">
+      <DependentUpon>201809242028275_updatePersonModelRemoveParentIdField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251903542_reCreateRelationshipConnectionModel2.cs" />
+    <Compile Include="Migrations\201809251903542_reCreateRelationshipConnectionModel2.Designer.cs">
+      <DependentUpon>201809251903542_reCreateRelationshipConnectionModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251916216_reCreateRelationshipConnectionModel3.cs" />
+    <Compile Include="Migrations\201809251916216_reCreateRelationshipConnectionModel3.Designer.cs">
+      <DependentUpon>201809251916216_reCreateRelationshipConnectionModel3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -358,12 +415,14 @@
     <Compile Include="Models\CivilStatus.cs" />
     <Compile Include="Models\EmploymentRank.cs" />
     <Compile Include="Models\EmploymentType.cs" />
+    <Compile Include="Models\RelationshipChart.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NatureOfBusiness.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Province.cs" />
+    <Compile Include="Models\RelationshipConnection.cs" />
     <Compile Include="Models\Suffix.cs" />
     <Compile Include="Models\EmploymentInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -372,6 +431,7 @@
     <Compile Include="ViewModels\EmploymentViewModel.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
+    <Compile Include="ViewModels\RelationshipConnectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -383,6 +443,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image\Avatar.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -439,8 +500,14 @@
     <Content Include="Views\Employment\EmploymentForm.cshtml" />
     <Content Include="Views\Address\AddressForm.cshtml" />
     <Content Include="Views\Person\PersonForm.cshtml" />
-    <Content Include="Views\PersonalDataSheet\Details.cshtml" />
+    <Content Include="Views\PersonalDataSheet\Details2.cshtml" />
     <Content Include="Views\PersonalDataSheet\Index.cshtml" />
+    <Content Include="Views\PersonalDataSheet\Details.cshtml" />
+    <Content Include="Views\RelationshipConnection\RelationshipMapper.cshtml" />
+    <Content Include="Views\Shared\_FamilyMember.cshtml" />
+    <Content Include="Views\Person\Find.cshtml" />
+    <Content Include="Views\Shared\_FamilyMemberMapper.cshtml" />
+    <Content Include="Views\Shared\_FindPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -561,6 +628,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809101319525_renameCityMunicipalityModel.resx">
       <DependentUpon>201809101319525_renameCityMunicipalityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809202135533_updatePersonModelFirstName.resx">
+      <DependentUpon>201809202135533_updatePersonModelFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241933492_createRelationshipChartMOdel.resx">
+      <DependentUpon>201809241933492_createRelationshipChartMOdel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241936026_createRelationshipChartMOdel1.resx">
+      <DependentUpon>201809241936026_createRelationshipChartMOdel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241949069_addRelationshipConnectionModel.resx">
+      <DependentUpon>201809241949069_addRelationshipConnectionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241952180_crateRelationshipConnectionModel.resx">
+      <DependentUpon>201809241952180_crateRelationshipConnectionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241958158_updateRelationshipConnectionModel.resx">
+      <DependentUpon>201809241958158_updateRelationshipConnectionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242001254_updateRelationshipConnectionModel2.resx">
+      <DependentUpon>201809242001254_updateRelationshipConnectionModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242008367_updateRelationshipConnectionModel3.resx">
+      <DependentUpon>201809242008367_updateRelationshipConnectionModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242011566_updateRelationshipConnectionModel4.resx">
+      <DependentUpon>201809242011566_updateRelationshipConnectionModel4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242015290_removeRelationshipConnectionModel.resx">
+      <DependentUpon>201809242015290_removeRelationshipConnectionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242017364_reCreateRelationshipConnectionModel.resx">
+      <DependentUpon>201809242017364_reCreateRelationshipConnectionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809242028275_updatePersonModelRemoveParentIdField.resx">
+      <DependentUpon>201809242028275_updatePersonModelRemoveParentIdField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251903542_reCreateRelationshipConnectionModel2.resx">
+      <DependentUpon>201809251903542_reCreateRelationshipConnectionModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251916216_reCreateRelationshipConnectionModel3.resx">
+      <DependentUpon>201809251916216_reCreateRelationshipConnectionModel3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

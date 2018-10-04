@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PII.Models;
+﻿using PII.Models;
 using PII.ViewModels;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace PII.Controllers
 {
@@ -65,17 +64,27 @@ namespace PII.Controllers
         public ActionResult Details(int id)
         {
             var person = _context.Persons.SingleOrDefault(c => c.Id == id);
-            var residentialAddress = _context.Address.SingleOrDefault(r => r.PersonId == person.Id && r.AddressTypeId == 1);
-            var permanentAddress = _context.Address.SingleOrDefault(p => p.PersonId == person.Id && p.AddressTypeId == 2);
+            var residentialAddressObject = _context.Address.SingleOrDefault(r => r.PersonId == person.Id && r.AddressTypeId == 1);
+            var permanentAddressObject = _context.Address.SingleOrDefault(p => p.PersonId == person.Id && p.AddressTypeId == 2);
+            var residentialAddress = new AddressController().GetFullAddress(person.Id, 1);
+            var permanentAddress = new AddressController().GetFullAddress(person.Id, 2);
+            var familyMembers = _context.RelationshipConnection.Include(m => m.RelationshipChart).Include(d => d.Person2).Where(c => c.PersonId == id);
+            var relationshipChart = _context.RelationshipChart.ToList();
 
             var viewModel = new PersonalInformationViewModel
             {
                 Person = person,
                 CivilStatus = GetCivilStatus(),
                 Genders = GetGenders(),
+                ResidentialAddressObject = residentialAddressObject,
+                PermanentAddressObject = permanentAddressObject,
                 ResidentialAddress = residentialAddress,
                 PermanentAddress = permanentAddress,
-                Suffixes = GetSuffixes()
+                Suffixes = GetSuffixes(),
+                FamilyMembers = familyMembers,
+                RelationshipChart = relationshipChart
+
+                //PersonFamilyMembers = result,
             };
             return View(viewModel);
         }

@@ -1,0 +1,42 @@
+﻿@model PII.ViewModels.RelationshipConnectionViewModel
+@{
+    ViewBag.Title = "RelationshipConnection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>@Model.Person.LastName @Model.Person.FirstName @Model.Person.MiddleName</h4>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+        <th>Relationship</th>
+        <th>Name</th>
+        <th>Occupation</th>
+        <th>Date of Birth</th>
+
+        </thead>
+        <tbody>
+        @foreach (var member in Model.RelationshipConnections)
+        {
+            <tr>
+                <td>@member.RelationshipChart.Relationship</td>
+                <td>@member.Person2.FirstName @member.Person2.LastName @member.Person2.MiddleName</td>
+                <td>@member.Person2.Title</td>
+                <td>@member.Person2.DateOfBirth</td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+    <div class="btn btn-primary btn-sm">
+        @Html.ActionLink("Back", "Details", "PersonalDataSheet", new { id = @Model.Person.Id }, null)
+    </div>
+
+
+}

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("AddressForm", "Address"))
+@using (Html.BeginForm("Save", "Address"))
 {
     <div class="container">
         <div class="row">
@@ -15,8 +15,7 @@
                         <h6 class="panel-title">
                             RESIDENTIAL ADDRESS
                             <span class="badge float-right " style="font-style: italic">Hi
-                                @Html.DisplayFor(m => m.Person.FistName)
-                                @*@Html.DisplayFor(m => m.Person.LastName)*@
+                                @Html.DisplayFor(m => m.Person.FirstName)
                             </span>
                         </h6>
                     </div>
@@ -45,7 +44,13 @@
 
                                         @Html.LabelFor(m => m.Address.Zip, new { @class = "control-label" })
                                         @Html.TextBoxFor(m => m.Address.Zip, new { @class = "form-control", @title ="Your location Zip number" })
-                                    </div>
+
+                                        @Html.LabelFor(m => m.Address.Longitude, new { @class = "control-label"})
+                                        @Html.TextBoxFor(m => m.Address.Longitude, new { @class = "form-control", @readonly = "readonly" })
+
+                                        @Html.LabelFor(m => m.Address.Latitude, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Address.Latitude, new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
                                     <div class="col-sm-9">
                                         <div id="googleMap" style="width:100%;height:400px;"></div>
                                     </div>
@@ -56,6 +61,8 @@
                 </div>
             </div>
             <br />
+            @Html.HiddenFor(m => m.Address.Id)
+            <button class="btn btn-primary btn-sm">Save</button>
             <div class="btn btn-default btn-sm float-right">
                 @Html.ActionLink("Save", "Details", "PersonalDataSheet", new { id = @Model.Person.Id }, null)
             </div>
@@ -65,7 +72,14 @@
     @section Scripts {
         <script>
             function myMap() {
-                var myCenter = new google.maps.LatLng(14.642978, 121.0366274);
+                var setLatitude = $("#Address_Latitude").val();
+                var setLongitude = $("#Address_Longitude").val();
+                if (setLatitude == null || setLongitude == null || setLatitude == '' || setLongitude == '') {
+                    setLatitude = 14.642978;
+                    setLongitude = 121.0366274;
+                };
+
+                var myCenter = new google.maps.LatLng(setLatitude, setLongitude);
                 var mapOptions = { center: myCenter, zoom: 14 };
                 var mapCanvas = document.getElementById("googleMap");
                 var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -87,8 +101,10 @@
                 var infowindow = new google.maps.InfoWindow({
                     content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
                 });
-                infowindow.open(map, marker);
 
+                //infowindow.open(map, marker);
+                $("#Address_Longitude").val(location.lng());
+                $("#Address_Latitude").val(location.lat());
             }
 
             $('#Address_ProvinceId').change(function() {
@@ -150,7 +166,7 @@
             //$(function () {
             //    $(document).tooltip();
             //});
-            $(function () {
+            $(function() {
                 $(document).tooltip({
                     tooltipClass: "uitooltip",
                     position: {
@@ -172,7 +188,7 @@
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbO0go4nlwkl8o_p1ol8EZg7zdbc3MuN8&callback=myMap"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-         }
+    }
 
 
 
